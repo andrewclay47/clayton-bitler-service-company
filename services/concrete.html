@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -48,7 +48,8 @@
     #mobile-menu {
       transition: opacity 0.2s ease, transform 0.2s ease;
     }
-    #services-dropdown {
+    #services-dropdown,
+    #irrigation-dropdown {
       transition: opacity 0.15s ease, visibility 0.15s ease;
     }
   </style>
@@ -97,6 +98,34 @@
             </div>
           </div>
 
+          <div class="relative" id="irrigation-nav-wrapper">
+            <button
+              id="irrigation-dropdown-btn"
+              type="button"
+              class="flex items-center gap-1 px-4 py-2 text-sm font-medium text-slate-600 hover:text-forest-700 hover:bg-forest-50 rounded-lg transition-colors"
+              aria-expanded="false"
+              aria-haspopup="true"
+              aria-controls="irrigation-dropdown"
+            >
+              Irrigation
+              <svg class="w-4 h-4 transition-transform" id="irrigation-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            <div
+              id="irrigation-dropdown"
+              class="absolute top-full left-0 mt-1 w-72 bg-white rounded-xl shadow-xl border border-slate-100 py-2 opacity-0 invisible"
+              role="menu"
+            >
+              <a href="../irrigation/index.html" class="block px-4 py-2.5 text-sm text-slate-600 hover:bg-forest-50 hover:text-forest-700 transition-colors" role="menuitem">Irrigation Overview</a>
+              <a href="../irrigation/system-installation.html" class="block px-4 py-2.5 text-sm text-slate-600 hover:bg-forest-50 hover:text-forest-700 transition-colors" role="menuitem">Sprinkler Installation</a>
+              <a href="../irrigation/sprinkler-design.html" class="block px-4 py-2.5 text-sm text-slate-600 hover:bg-forest-50 hover:text-forest-700 transition-colors" role="menuitem">Sprinkler Design</a>
+              <a href="../irrigation/repairs.html" class="block px-4 py-2.5 text-sm text-slate-600 hover:bg-forest-50 hover:text-forest-700 transition-colors" role="menuitem">Sprinkler Repair</a>
+              <a href="../irrigation/backflow-testing.html" class="block px-4 py-2.5 text-sm text-slate-600 hover:bg-forest-50 hover:text-forest-700 transition-colors" role="menuitem">Backflow Testing</a>
+              <a href="../irrigation/custom-scheduling.html" class="block px-4 py-2.5 text-sm text-slate-600 hover:bg-forest-50 hover:text-forest-700 transition-colors" role="menuitem">Custom Scheduling</a>
+              <a href="../irrigation/water-conservation.html" class="block px-4 py-2.5 text-sm text-slate-600 hover:bg-forest-50 hover:text-forest-700 transition-colors" role="menuitem">Water Conservation</a>
+            </div>
+          </div>
           <a href="../contact.html" class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-forest-700 hover:bg-forest-50 rounded-lg transition-colors">Contact</a>
         </nav>
 
@@ -156,6 +185,29 @@
             <a href="concrete.html" class="block px-4 py-2.5 text-sm font-medium text-forest-700 rounded-lg">Concrete Construction</a>
             <a href="roof-replacements.html" class="block px-4 py-2.5 text-sm text-slate-500 hover:text-forest-700 rounded-lg transition-colors">Roof Replacements</a>
             <a href="pools.html" class="block px-4 py-2.5 text-sm text-slate-500 hover:text-forest-700 rounded-lg transition-colors">Pools</a>
+          </div>
+        </div>
+        <div>
+          <button
+            id="mobile-irrigation-btn"
+            type="button"
+            class="flex items-center justify-between w-full px-4 py-3 text-sm font-medium text-slate-600 hover:bg-forest-50 hover:text-forest-700 rounded-lg transition-colors"
+            aria-expanded="false"
+            aria-controls="mobile-irrigation-list"
+          >
+            Irrigation
+            <svg class="w-4 h-4 transition-transform" id="mobile-irrigation-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div id="mobile-irrigation-list" class="hidden pl-4 mt-1 space-y-1">
+            <a href="../irrigation/index.html" class="block px-4 py-2.5 text-sm text-slate-500 hover:text-forest-700 rounded-lg transition-colors">Irrigation Overview</a>
+            <a href="../irrigation/system-installation.html" class="block px-4 py-2.5 text-sm text-slate-500 hover:text-forest-700 rounded-lg transition-colors">Sprinkler Installation</a>
+            <a href="../irrigation/sprinkler-design.html" class="block px-4 py-2.5 text-sm text-slate-500 hover:text-forest-700 rounded-lg transition-colors">Sprinkler Design</a>
+            <a href="../irrigation/repairs.html" class="block px-4 py-2.5 text-sm text-slate-500 hover:text-forest-700 rounded-lg transition-colors">Sprinkler Repair</a>
+            <a href="../irrigation/backflow-testing.html" class="block px-4 py-2.5 text-sm text-slate-500 hover:text-forest-700 rounded-lg transition-colors">Backflow Testing</a>
+            <a href="../irrigation/custom-scheduling.html" class="block px-4 py-2.5 text-sm text-slate-500 hover:text-forest-700 rounded-lg transition-colors">Custom Scheduling</a>
+            <a href="../irrigation/water-conservation.html" class="block px-4 py-2.5 text-sm text-slate-500 hover:text-forest-700 rounded-lg transition-colors">Water Conservation</a>
           </div>
         </div>
         <a href="../contact.html" class="block px-4 py-3 text-sm font-medium text-slate-600 hover:bg-forest-50 hover:text-forest-700 rounded-lg transition-colors">Contact</a>
@@ -360,6 +412,7 @@
           <ul class="space-y-2.5 text-sm">
             <li><a href="../index.html" class="hover:text-white transition-colors">Home</a></li>
             <li><a href="../about.html" class="hover:text-white transition-colors">About Us</a></li>
+            <li><a href="../irrigation/index.html" class="hover:text-white transition-colors">Irrigation</a></li>
             <li><a href="../contact.html" class="hover:text-white transition-colors">Contact</a></li>
           </ul>
         </div>
@@ -385,9 +438,21 @@
         <p class="text-xs text-slate-500 leading-relaxed mb-4">
           LI 8729 BP 10016. Irrigation in Texas is regulated by the Texas Commission On Environmental Quality (TCEQ) (MC-178), P.O. Box 13087, Austin, Texas 78711-3087.
         </p>
-        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs text-slate-500">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-xs text-slate-500">
           <p>&copy; <span id="copyright-year"></span> Clayton Bitler Service Company. All rights reserved.</p>
-          <p>Dallas, Texas</p>
+          <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+            <p>Dallas, Texas</p>
+                        <div class="inline-flex flex-wrap items-center gap-x-3 gap-y-1 bg-white text-slate-600 rounded-md px-2.5 py-1.5">
+              <span class="inline-flex items-center gap-2">
+                <span>Powered by</span>
+                <img src="../assets/images/ant-logo.png" alt="Red Clay Marketing" class="h-7 w-auto">
+              </span>
+              <span class="text-slate-300" aria-hidden="true">|</span>
+              <a href="mailto:andrew@redclay.marketing" class="hover:text-forest-700 transition-colors">
+                Contact: andrew@redclay.marketing
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -411,50 +476,87 @@
         mobileMenuBtn.setAttribute('aria-expanded', String(!isOpen));
       });
 
-      var mobileServicesBtn = document.getElementById('mobile-services-btn');
-      var mobileServicesList = document.getElementById('mobile-services-list');
-      var mobileServicesChevron = document.getElementById('mobile-services-chevron');
+      function setupMobileAccordion(btnId, listId, chevronId) {
+        var btn = document.getElementById(btnId);
+        var list = document.getElementById(listId);
+        var chevron = document.getElementById(chevronId);
+        btn.addEventListener('click', function () {
+          var isOpen = !list.classList.contains('hidden');
+          list.classList.toggle('hidden', isOpen);
+          chevron.style.transform = isOpen ? '' : 'rotate(180deg)';
+          btn.setAttribute('aria-expanded', String(!isOpen));
+        });
+      }
+      setupMobileAccordion('mobile-services-btn', 'mobile-services-list', 'mobile-services-chevron');
+      setupMobileAccordion('mobile-irrigation-btn', 'mobile-irrigation-list', 'mobile-irrigation-chevron');
 
-      mobileServicesBtn.addEventListener('click', function () {
-        var isOpen = !mobileServicesList.classList.contains('hidden');
-        mobileServicesList.classList.toggle('hidden', isOpen);
-        mobileServicesChevron.style.transform = isOpen ? '' : 'rotate(180deg)';
-        mobileServicesBtn.setAttribute('aria-expanded', String(!isOpen));
+      function setupDesktopDropdown(wrapperId, btnId, dropdownId, chevronId) {
+        var wrapper = document.getElementById(wrapperId);
+        var btn = document.getElementById(btnId);
+        var dropdown = document.getElementById(dropdownId);
+        var chevron = document.getElementById(chevronId);
+        var open = false;
+
+        function openMenu() {
+          open = true;
+          dropdown.classList.remove('opacity-0', 'invisible');
+          btn.setAttribute('aria-expanded', 'true');
+          chevron.style.transform = 'rotate(180deg)';
+        }
+
+        function closeMenu() {
+          open = false;
+          dropdown.classList.add('opacity-0', 'invisible');
+          btn.setAttribute('aria-expanded', 'false');
+          chevron.style.transform = '';
+        }
+
+        return {
+          wrapper: wrapper,
+          btn: btn,
+          openMenu: openMenu,
+          closeMenu: closeMenu,
+          isOpen: function () { return open; },
+        };
+      }
+
+      var servicesMenu = setupDesktopDropdown('services-nav-wrapper', 'services-dropdown-btn', 'services-dropdown', 'services-chevron');
+      var irrigationMenu = setupDesktopDropdown('irrigation-nav-wrapper', 'irrigation-dropdown-btn', 'irrigation-dropdown', 'irrigation-chevron');
+
+      servicesMenu.btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (servicesMenu.isOpen()) {
+          servicesMenu.closeMenu();
+        } else {
+          irrigationMenu.closeMenu();
+          servicesMenu.openMenu();
+        }
       });
 
-      var servicesWrapper = document.getElementById('services-nav-wrapper');
-      var servicesDropdownBtn = document.getElementById('services-dropdown-btn');
-      var servicesDropdown = document.getElementById('services-dropdown');
-      var servicesChevron = document.getElementById('services-chevron');
-      var dropdownOpen = false;
-
-      function openDropdown() {
-        dropdownOpen = true;
-        servicesDropdown.classList.remove('opacity-0', 'invisible');
-        servicesDropdownBtn.setAttribute('aria-expanded', 'true');
-        servicesChevron.style.transform = 'rotate(180deg)';
-      }
-
-      function closeDropdown() {
-        dropdownOpen = false;
-        servicesDropdown.classList.add('opacity-0', 'invisible');
-        servicesDropdownBtn.setAttribute('aria-expanded', 'false');
-        servicesChevron.style.transform = '';
-      }
-
-      servicesDropdownBtn.addEventListener('click', function (e) {
+      irrigationMenu.btn.addEventListener('click', function (e) {
         e.stopPropagation();
-        dropdownOpen ? closeDropdown() : openDropdown();
+        if (irrigationMenu.isOpen()) {
+          irrigationMenu.closeMenu();
+        } else {
+          servicesMenu.closeMenu();
+          irrigationMenu.openMenu();
+        }
       });
 
       document.addEventListener('click', function (e) {
-        if (dropdownOpen && !servicesWrapper.contains(e.target)) closeDropdown();
+        if (servicesMenu.isOpen() && !servicesMenu.wrapper.contains(e.target)) servicesMenu.closeMenu();
+        if (irrigationMenu.isOpen() && !irrigationMenu.wrapper.contains(e.target)) irrigationMenu.closeMenu();
       });
 
       document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && dropdownOpen) {
-          closeDropdown();
-          servicesDropdownBtn.focus();
+        if (e.key !== 'Escape') return;
+        if (servicesMenu.isOpen()) {
+          servicesMenu.closeMenu();
+          servicesMenu.btn.focus();
+        }
+        if (irrigationMenu.isOpen()) {
+          irrigationMenu.closeMenu();
+          irrigationMenu.btn.focus();
         }
       });
 
@@ -468,6 +570,7 @@
       });
     })();
   </script>
+
 
 </body>
 </html>

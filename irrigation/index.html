@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sprinkler Genius Irrigation and Drainage Company — over 15 years installing, repairing, and servicing lawn sprinkler systems in North Texas. Licensed Texas irrigators.">
+  <title>Sprinkler Genius Irrigation and Drainage Company | Dallas, TX</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: {
+              50:  '#f2f7f4',
+              100: '#e0ede5',
+              200: '#c2dacb',
+              300: '#97bfaa',
+              400: '#6a9f82',
+              500: '#4a8266',
+              600: '#386851',
+              700: '#2d5342',
+              800: '#264336',
+              900: '#20382d',
+              950: '#111f19',
+            },
+            accent: {
+              DEFAULT: '#c9a227',
+              light: '#e8c547',
+              dark: '#a6851f',
+            },
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    #mobile-menu {
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    #services-dropdown,
+    #irrigation-dropdown {
+      transition: opacity 0.15s ease, visibility 0.15s ease;
+    }
+  </style>
+</head>
+
+<body class="font-sans text-slate-700 antialiased bg-white">
+
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 lg:h-20">
+
+        <a href="../index.html" class="flex items-center shrink-0" aria-label="Clayton Bitler Service Company — Home">
+          <img src="../assets/images/logo.png" alt="Clayton Bitler Service Company" class="h-10 sm:h-12 w-auto">
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-1" aria-label="Main navigation">
+          <a href="../index.html" class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-forest-700 hover:bg-forest-50 rounded-lg transition-colors">Home</a>
+          <a href="../about.html" class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-forest-700 hover:bg-forest-50 rounded-lg transition-colors">About Us</a>
+
+          <div class="relative" id="services-nav-wrapper">
+            <button
+              id="services-dropdown-btn"
+              type="button"
+              class="flex items-center gap-1 px-4 py-2 text-sm font-medium text-slate-600 hover:text-forest-700 hover:bg-forest-50 rounded-lg transition-colors"
+              aria-expanded="false"
+              aria-haspopup="true"
+              aria-controls="services-dropdown"
+            >
+              Services
+              <svg class="w-4 h-4 transition-transform" id="services-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            <div
+              id="services-dropdown"
+              class="absolute top-full left-0 mt-1 w-72 bg-white rounded-xl shadow-xl border border-slate-100 py-2 opacity-0 invisible"
+              role="menu"
+            >
+              <a href="../services/lawn-mowing.html" class="block px-4 py-2.5 text-sm text-slate-600 hover:bg-forest-50 hover:text-forest-700 transition-colors" role="menuitem">Lawn Mowing</a>
+              <a href="../services/landscaping.html" class="block px-4 py-2.5 text-sm text-slate-600 hover:bg-forest-50 hover:text-forest-700 transition-colors" role="menuitem">Landscaping</a>
+              <a href="../services/fence-arbor.html" class="block px-4 py-2.5 text-sm text-slate-600 hover:bg-forest-50 hover:text-forest-700 transition-colors" role="menuitem">Fence &amp; Arbor Installation</a>
+              <a href="../services/concrete.html" class="block px-4 py-2.5 text-sm text-slate-600 hover:bg-forest-50 hover:text-forest-700 transition-colors" role="menuitem">Concrete Construction</a>
+              <a href="../services/roof-replacements.html" class="block px-4 py-2.5 text-sm text-slate-600 hover:bg-forest-50 hover:text-forest-700 transition-colors" role="menuitem">Roof Replacements</a>
+              <a href="../services/pools.html" class="block px-4 py-2.5 text-sm text-slate-600 hover:bg-forest-50 hover:text-forest-700 transition-colors" role="menuitem">Pools</a>
+            </div>
+          </div>
+
+          <div class="relative" id="irrigation-nav-wrapper">
+            <button
+              id="irrigation-dropdown-btn"
+              type="button"
+              class="flex items-center gap-1 px-4 py-2 text-sm font-medium text-forest-700 bg-forest-50 rounded-lg"
+              aria-expanded="false"
+              aria-haspopup="true"
+              aria-controls="irrigation-dropdown"
+            >
+              Irrigation
+              <svg class="w-4 h-4 transition-transform" id="irrigation-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            <div
+              id="irrigation-dropdown"
+              class="absolute top-full left-0 mt-1 w-72 bg-white rounded-xl shadow-xl border border-slate-100 py-2 opacity-0 invisible"
+              role="menu"
+            >
+              <a href="index.html" class="block px-4 py-2.5 text-sm font-medium text-forest-700 bg-forest-50" role="menuitem">Irrigation Overview</a>
+              <a href="system-installation.html" class="block px-4 py-2.5 text-sm text-slate-600 hover:bg-forest-50 hover:text-forest-700 transition-colors" role="menuitem">Sprinkler Installation</a>
+              <a href="sprinkler-design.html" class="block px-4 py-2.5 text-sm text-slate-600 hover:bg-forest-50 hover:text-forest-700 transition-colors" role="menuitem">Sprinkler Design</a>
+              <a href="repairs.html" class="block px-4 py-2.5 text-sm text-slate-600 hover:bg-forest-50 hover:text-forest-700 transition-colors" role="menuitem">Sprinkler Repair</a>
+              <a href="backflow-testing.html" class="block px-4 py-2.5 text-sm text-slate-600 hover:bg-forest-50 hover:text-forest-700 transition-colors" role="menuitem">Backflow Testing</a>
+              <a href="custom-scheduling.html" class="block px-4 py-2.5 text-sm text-slate-600 hover:bg-forest-50 hover:text-forest-700 transition-colors" role="menuitem">Custom Scheduling</a>
+              <a href="water-conservation.html" class="block px-4 py-2.5 text-sm text-slate-600 hover:bg-forest-50 hover:text-forest-700 transition-colors" role="menuitem">Water Conservation</a>
+            </div>
+          </div>
+
+          <a href="../contact.html" class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-forest-700 hover:bg-forest-50 rounded-lg transition-colors">Contact</a>
+        </nav>
+
+        <div class="flex items-center gap-3">
+          <a
+            href="tel:9726702690"
+            class="inline-flex items-center gap-2 bg-forest-700 hover:bg-forest-600 text-white text-sm font-semibold px-4 py-2.5 rounded-lg shadow-md hover:shadow-lg transition-all"
+            aria-label="Call us at 972-670-2690"
+          >
+            <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+            </svg>
+            <span class="hidden sm:inline">972-670-2690</span>
+            <span class="sm:hidden">Call Now</span>
+          </a>
+
+          <button
+            id="mobile-menu-btn"
+            type="button"
+            class="lg:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+            aria-label="Toggle navigation menu"
+          >
+            <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+            <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <nav id="mobile-menu" class="hidden lg:hidden border-t border-slate-200 bg-white" aria-label="Mobile navigation">
+      <div class="max-w-7xl mx-auto px-4 py-4 space-y-1">
+        <a href="../index.html" class="block px-4 py-3 text-sm font-medium text-slate-600 hover:bg-forest-50 hover:text-forest-700 rounded-lg transition-colors">Home</a>
+        <a href="../about.html" class="block px-4 py-3 text-sm font-medium text-slate-600 hover:bg-forest-50 hover:text-forest-700 rounded-lg transition-colors">About Us</a>
+        <div>
+          <button
+            id="mobile-services-btn"
+            type="button"
+            class="flex items-center justify-between w-full px-4 py-3 text-sm font-medium text-slate-600 hover:bg-forest-50 hover:text-forest-700 rounded-lg transition-colors"
+            aria-expanded="false"
+            aria-controls="mobile-services-list"
+          >
+            Services
+            <svg class="w-4 h-4 transition-transform" id="mobile-services-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div id="mobile-services-list" class="hidden pl-4 mt-1 space-y-1">
+            <a href="../services/lawn-mowing.html" class="block px-4 py-2.5 text-sm text-slate-500 hover:text-forest-700 rounded-lg transition-colors">Lawn Mowing</a>
+            <a href="../services/landscaping.html" class="block px-4 py-2.5 text-sm text-slate-500 hover:text-forest-700 rounded-lg transition-colors">Landscaping</a>
+            <a href="../services/fence-arbor.html" class="block px-4 py-2.5 text-sm text-slate-500 hover:text-forest-700 rounded-lg transition-colors">Fence &amp; Arbor Installation</a>
+            <a href="../services/concrete.html" class="block px-4 py-2.5 text-sm text-slate-500 hover:text-forest-700 rounded-lg transition-colors">Concrete Construction</a>
+            <a href="../services/roof-replacements.html" class="block px-4 py-2.5 text-sm text-slate-500 hover:text-forest-700 rounded-lg transition-colors">Roof Replacements</a>
+            <a href="../services/pools.html" class="block px-4 py-2.5 text-sm text-slate-500 hover:text-forest-700 rounded-lg transition-colors">Pools</a>
+          </div>
+        </div>
+        <div>
+          <button
+            id="mobile-irrigation-btn"
+            type="button"
+            class="flex items-center justify-between w-full px-4 py-3 text-sm font-medium text-forest-700 bg-forest-50 rounded-lg"
+            aria-expanded="false"
+            aria-controls="mobile-irrigation-list"
+          >
+            Irrigation
+            <svg class="w-4 h-4 transition-transform" id="mobile-irrigation-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div id="mobile-irrigation-list" class="hidden pl-4 mt-1 space-y-1">
+            <a href="index.html" class="block px-4 py-2.5 text-sm font-medium text-forest-700 rounded-lg">Irrigation Overview</a>
+            <a href="system-installation.html" class="block px-4 py-2.5 text-sm text-slate-500 hover:text-forest-700 rounded-lg transition-colors">Sprinkler Installation</a>
+            <a href="sprinkler-design.html" class="block px-4 py-2.5 text-sm text-slate-500 hover:text-forest-700 rounded-lg transition-colors">Sprinkler Design</a>
+            <a href="repairs.html" class="block px-4 py-2.5 text-sm text-slate-500 hover:text-forest-700 rounded-lg transition-colors">Sprinkler Repair</a>
+            <a href="backflow-testing.html" class="block px-4 py-2.5 text-sm text-slate-500 hover:text-forest-700 rounded-lg transition-colors">Backflow Testing</a>
+            <a href="custom-scheduling.html" class="block px-4 py-2.5 text-sm text-slate-500 hover:text-forest-700 rounded-lg transition-colors">Custom Scheduling</a>
+            <a href="water-conservation.html" class="block px-4 py-2.5 text-sm text-slate-500 hover:text-forest-700 rounded-lg transition-colors">Water Conservation</a>
+          </div>
+        </div>
+        <a href="../contact.html" class="block px-4 py-3 text-sm font-medium text-slate-600 hover:bg-forest-50 hover:text-forest-700 rounded-lg transition-colors">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="relative min-h-[60vh] flex items-center overflow-hidden" aria-labelledby="hero-heading">
+      <div class="absolute inset-0 z-0">
+        <img
+          src="https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=1920&q=80"
+          alt="Healthy green lawn maintained with a professional sprinkler system"
+          class="w-full h-full object-cover"
+          loading="eager"
+          fetchpriority="high"
+        >
+        <div class="absolute inset-0 bg-gradient-to-r from-forest-950/90 via-forest-900/75 to-forest-800/45"></div>
+      </div>
+
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
+        <div class="max-w-2xl">
+          <p class="text-sm font-semibold text-accent uppercase tracking-widest mb-3">Irrigation &amp; Drainage</p>
+          <h1 id="hero-heading" class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight mb-3">
+            Sprinkler Genius
+          </h1>
+          <p class="text-xl sm:text-2xl font-semibold text-white/90 mb-6">
+            Irrigation and Drainage Company
+          </p>
+          <p class="text-lg sm:text-xl text-white/85 leading-relaxed mb-8 max-w-xl">
+            Over 15 years of experience servicing, repairing, and installing lawn sprinkler systems in North Texas. Locally owned — prompt, professional, and courteous.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a
+              href="../contact.html"
+              class="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-light text-forest-950 font-bold text-base px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all"
+            >
+              Get a Free Estimate
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </a>
+            <a
+              href="tel:9726702690"
+              class="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white font-semibold text-base px-8 py-4 rounded-xl transition-all"
+            >
+              972-670-2690
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTRO -->
+    <section class="py-16 lg:py-20 bg-white">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl font-extrabold text-forest-900 tracking-tight mb-4">About Sprinkler Genius</h2>
+        <p class="text-lg text-slate-600 leading-relaxed mb-6">
+          Sprinkler Genius has over 15 years of experience servicing, repairing, and installing lawn sprinkler systems in North Texas. We are a locally owned and operated company that provides prompt, professional, and courteous service.
+        </p>
+        <p class="text-lg text-slate-600 leading-relaxed mb-6">
+          Our irrigators and technicians are licensed by the state of Texas and offer a wide range of services that will keep your lawn green and healthy. We use only the highest quality parts that come with manufacturer’s warranties.
+        </p>
+        <p class="text-lg text-slate-600 leading-relaxed">
+          Our goal is to create a long-lasting relationship with all of our customers. We will get the job done quickly and correctly the first time.
+        </p>
+        <p class="mt-6 text-sm text-slate-500">
+          Licensed: LI 8729 · BP 10016
+        </p>
+      </div>
+    </section>
+
+    <!-- WHY US -->
+    <section class="py-16 lg:py-20 bg-slate-50" aria-labelledby="why-heading">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-14">
+          <span class="inline-block text-sm font-semibold text-forest-600 uppercase tracking-widest mb-3">Why Choose Us</span>
+          <h2 id="why-heading" class="text-3xl sm:text-4xl font-extrabold text-forest-900 tracking-tight mb-4">
+            Experience, Quality &amp; Care
+          </h2>
+          <p class="text-lg text-slate-600 leading-relaxed">
+            The same standards that keep North Texas lawns healthy — delivered with the courtesy Sprinkler Genius is known for.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="text-center md:text-left">
+            <div class="w-12 h-12 rounded-xl bg-forest-100 flex items-center justify-center mb-4 mx-auto md:mx-0">
+              <svg class="w-6 h-6 text-forest-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-forest-900 mb-2">15+ Years Experience</h3>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Decades of hands-on work installing, servicing, and repairing lawn sprinkler systems across North Texas.
+            </p>
+          </div>
+          <div class="text-center md:text-left">
+            <div class="w-12 h-12 rounded-xl bg-forest-100 flex items-center justify-center mb-4 mx-auto md:mx-0">
+              <svg class="w-6 h-6 text-forest-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-forest-900 mb-2">Texas Licensed</h3>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              State-licensed irrigators and technicians — professional work that meets Texas requirements.
+            </p>
+          </div>
+          <div class="text-center md:text-left">
+            <div class="w-12 h-12 rounded-xl bg-forest-100 flex items-center justify-center mb-4 mx-auto md:mx-0">
+              <svg class="w-6 h-6 text-forest-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-forest-900 mb-2">Quality Parts</h3>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              We use only the highest quality parts backed by manufacturer’s warranties for lasting performance.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="py-16 lg:py-20 bg-white" aria-labelledby="irrigation-services-heading">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-14">
+          <span class="inline-block text-sm font-semibold text-forest-600 uppercase tracking-widest mb-3">Our Services</span>
+          <h2 id="irrigation-services-heading" class="text-3xl sm:text-4xl font-extrabold text-forest-900 tracking-tight mb-4">
+            Explore Individual Services
+          </h2>
+          <p class="text-lg text-slate-600 leading-relaxed">
+            Tour our website to find more information about our individual services, or call us at <a href="tel:9726702690" class="font-semibold text-forest-700 hover:text-forest-800 transition-colors">972-670-2690</a>.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+
+          <article class="group bg-slate-50 rounded-2xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+            <div class="p-6">
+              <div class="w-12 h-12 rounded-xl bg-forest-100 flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-forest-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-forest-900 mb-2">Sprinkler Installation</h3>
+              <p class="text-slate-600 text-sm leading-relaxed mb-4">CAD-designed systems installed by licensed irrigators for efficient, even coverage.</p>
+              <a href="system-installation.html" class="inline-flex items-center gap-1 text-sm font-semibold text-forest-600 hover:text-forest-800 transition-colors">
+                Learn More
+                <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="group bg-slate-50 rounded-2xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+            <div class="p-6">
+              <div class="w-12 h-12 rounded-xl bg-forest-100 flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-forest-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-forest-900 mb-2">Sprinkler Design</h3>
+              <p class="text-slate-600 text-sm leading-relaxed mb-4">Professional CAD plans with all calculations and a watering schedule included.</p>
+              <a href="sprinkler-design.html" class="inline-flex items-center gap-1 text-sm font-semibold text-forest-600 hover:text-forest-800 transition-colors">
+                Learn More
+                <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="group bg-slate-50 rounded-2xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+            <div class="p-6">
+              <div class="w-12 h-12 rounded-xl bg-forest-100 flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-forest-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-forest-900 mb-2">Sprinkler Repair</h3>
+              <p class="text-slate-600 text-sm leading-relaxed mb-4">Broken heads, zones, timers, pipes, and coverage issues — fixed by irrigation specialists.</p>
+              <a href="repairs.html" class="inline-flex items-center gap-1 text-sm font-semibold text-forest-600 hover:text-forest-800 transition-colors">
+                Learn More
+                <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="group bg-slate-50 rounded-2xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+            <div class="p-6">
+              <div class="w-12 h-12 rounded-xl bg-forest-100 flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-forest-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-forest-900 mb-2">Backflow Testing</h3>
+              <p class="text-slate-600 text-sm leading-relaxed mb-4">Annual testing, certification, repair, and replacement by licensed backflow experts.</p>
+              <a href="backflow-testing.html" class="inline-flex items-center gap-1 text-sm font-semibold text-forest-600 hover:text-forest-800 transition-colors">
+                Learn More
+                <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="group bg-slate-50 rounded-2xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+            <div class="p-6">
+              <div class="w-12 h-12 rounded-xl bg-forest-100 flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-forest-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-forest-900 mb-2">Custom Scheduling</h3>
+              <p class="text-slate-600 text-sm leading-relaxed mb-4">Zone-by-zone irrigation programs that save water and keep plants healthy through North Texas seasons.</p>
+              <a href="custom-scheduling.html" class="inline-flex items-center gap-1 text-sm font-semibold text-forest-600 hover:text-forest-800 transition-colors">
+                Learn More
+                <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="group bg-slate-50 rounded-2xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+            <div class="p-6">
+              <div class="w-12 h-12 rounded-xl bg-forest-100 flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-forest-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-forest-900 mb-2">Water Conservation</h3>
+              <p class="text-slate-600 text-sm leading-relaxed mb-4">Fix waste, upgrade to precision nozzles, and cut water use with ET controllers.</p>
+              <a href="water-conservation.html" class="inline-flex items-center gap-1 text-sm font-semibold text-forest-600 hover:text-forest-800 transition-colors">
+                Learn More
+                <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICE AREA -->
+    <section class="py-16 lg:py-20 bg-slate-50" aria-labelledby="area-heading">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <span class="inline-block text-sm font-semibold text-forest-600 uppercase tracking-widest mb-3">Service Area</span>
+        <h2 id="area-heading" class="text-3xl font-extrabold text-forest-900 tracking-tight mb-4">
+          Proudly Serving North Texas
+        </h2>
+        <p class="text-lg text-slate-600 leading-relaxed">
+          Dallas, Plano, Richardson, McKinney, Garland, Allen, Frisco, Highland Park, and Park Cities.
+        </p>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 lg:py-20 bg-forest-900">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">Ready to Get Started?</h2>
+        <p class="text-lg text-white/80 leading-relaxed mb-8">
+          Tour our individual service pages for more information, or call Sprinkler Genius today. We’ll get the job done quickly and correctly the first time.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="tel:9726702690"
+            class="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-light text-forest-950 font-bold px-8 py-4 rounded-xl transition-colors"
+          >
+            Call 972-670-2690
+          </a>
+          <a
+            href="../contact.html"
+            class="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold px-8 py-4 rounded-xl transition-colors"
+          >
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer style="background-color: #1a2332;" class="text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div class="sm:col-span-2 lg:col-span-1">
+          <a href="../index.html" class="inline-block mb-4">
+            <img src="../assets/images/logo.png" alt="Clayton Bitler Service Company" class="h-12 w-auto">
+          </a>
+          <p class="text-sm leading-relaxed mb-4">
+            <span class="block text-white font-semibold mb-1">Sprinkler Genius</span>
+            Irrigation and Drainage Company — licensed lawn sprinkler installation, repair, and service for North Texas homeowners.
+          </p>
+          <p class="text-xs text-slate-500 mb-4">Part of Clayton Bitler Service Company</p>
+          <a href="tel:9726702690" class="inline-flex items-center gap-2 text-accent hover:text-accent-light font-semibold text-sm transition-colors">972-670-2690</a>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Quick Links</h3>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="../index.html" class="hover:text-white transition-colors">Home</a></li>
+            <li><a href="../about.html" class="hover:text-white transition-colors">About Us</a></li>
+            <li><a href="index.html" class="hover:text-white transition-colors">Irrigation</a></li>
+            <li><a href="../contact.html" class="hover:text-white transition-colors">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Services</h3>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="../services/lawn-mowing.html" class="hover:text-white transition-colors">Lawn Mowing</a></li>
+            <li><a href="../services/landscaping.html" class="hover:text-white transition-colors">Landscaping</a></li>
+            <li><a href="../services/fence-arbor.html" class="hover:text-white transition-colors">Fence &amp; Arbor</a></li>
+            <li><a href="../services/concrete.html" class="hover:text-white transition-colors">Concrete</a></li>
+            <li><a href="../services/roof-replacements.html" class="hover:text-white transition-colors">Roof Replacements</a></li>
+            <li><a href="../services/pools.html" class="hover:text-white transition-colors">Pools</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Service Area</h3>
+          <p class="text-sm leading-relaxed">
+            Dallas · Plano · Richardson · McKinney · Garland · Allen · Frisco · Highland Park · North Dallas · Park Cities
+          </p>
+        </div>
+      </div>
+      <div class="border-t border-slate-700 pt-8">
+        <p class="text-xs text-slate-500 leading-relaxed mb-4">
+          LI 8729 BP 10016. Irrigation in Texas is regulated by the Texas Commission On Environmental Quality (TCEQ) (MC-178), P.O. Box 13087, Austin, Texas 78711-3087.
+        </p>
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-xs text-slate-500">
+          <p>&copy; <span id="copyright-year"></span> Sprinkler Genius / Clayton Bitler Service Company. All rights reserved.</p>
+          <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+            <p>Dallas, Texas</p>
+            <div class="inline-flex flex-wrap items-center gap-x-3 gap-y-1 bg-white text-slate-600 rounded-md px-2.5 py-1.5">
+              <span class="inline-flex items-center gap-2">
+                <span>Powered by</span>
+                <img src="../assets/images/ant-logo.png" alt="Red Clay Marketing" class="h-7 w-auto">
+              </span>
+              <span class="text-slate-300" aria-hidden="true">|</span>
+              <a href="mailto:andrew@redclay.marketing" class="hover:text-forest-700 transition-colors">
+                Contact: andrew@redclay.marketing
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      'use strict';
+      document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
+      var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      var mobileMenu = document.getElementById('mobile-menu');
+      var menuIconOpen = document.getElementById('menu-icon-open');
+      var menuIconClose = document.getElementById('menu-icon-close');
+
+      mobileMenuBtn.addEventListener('click', function () {
+        var isOpen = !mobileMenu.classList.contains('hidden');
+        mobileMenu.classList.toggle('hidden', isOpen);
+        menuIconOpen.classList.toggle('hidden', !isOpen);
+        menuIconClose.classList.toggle('hidden', isOpen);
+        mobileMenuBtn.setAttribute('aria-expanded', String(!isOpen));
+      });
+
+      function setupMobileAccordion(btnId, listId, chevronId) {
+        var btn = document.getElementById(btnId);
+        var list = document.getElementById(listId);
+        var chevron = document.getElementById(chevronId);
+        btn.addEventListener('click', function () {
+          var isOpen = !list.classList.contains('hidden');
+          list.classList.toggle('hidden', isOpen);
+          chevron.style.transform = isOpen ? '' : 'rotate(180deg)';
+          btn.setAttribute('aria-expanded', String(!isOpen));
+        });
+      }
+      setupMobileAccordion('mobile-services-btn', 'mobile-services-list', 'mobile-services-chevron');
+      setupMobileAccordion('mobile-irrigation-btn', 'mobile-irrigation-list', 'mobile-irrigation-chevron');
+
+      function setupDesktopDropdown(wrapperId, btnId, dropdownId, chevronId) {
+        var wrapper = document.getElementById(wrapperId);
+        var btn = document.getElementById(btnId);
+        var dropdown = document.getElementById(dropdownId);
+        var chevron = document.getElementById(chevronId);
+        var open = false;
+
+        function openMenu() {
+          open = true;
+          dropdown.classList.remove('opacity-0', 'invisible');
+          btn.setAttribute('aria-expanded', 'true');
+          chevron.style.transform = 'rotate(180deg)';
+        }
+
+        function closeMenu() {
+          open = false;
+          dropdown.classList.add('opacity-0', 'invisible');
+          btn.setAttribute('aria-expanded', 'false');
+          chevron.style.transform = '';
+        }
+
+        return {
+          wrapper: wrapper,
+          btn: btn,
+          openMenu: openMenu,
+          closeMenu: closeMenu,
+          isOpen: function () { return open; },
+        };
+      }
+
+      var servicesMenu = setupDesktopDropdown('services-nav-wrapper', 'services-dropdown-btn', 'services-dropdown', 'services-chevron');
+      var irrigationMenu = setupDesktopDropdown('irrigation-nav-wrapper', 'irrigation-dropdown-btn', 'irrigation-dropdown', 'irrigation-chevron');
+
+      servicesMenu.btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (servicesMenu.isOpen()) {
+          servicesMenu.closeMenu();
+        } else {
+          irrigationMenu.closeMenu();
+          servicesMenu.openMenu();
+        }
+      });
+
+      irrigationMenu.btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (irrigationMenu.isOpen()) {
+          irrigationMenu.closeMenu();
+        } else {
+          servicesMenu.closeMenu();
+          irrigationMenu.openMenu();
+        }
+      });
+
+      document.addEventListener('click', function (e) {
+        if (servicesMenu.isOpen() && !servicesMenu.wrapper.contains(e.target)) servicesMenu.closeMenu();
+        if (irrigationMenu.isOpen() && !irrigationMenu.wrapper.contains(e.target)) irrigationMenu.closeMenu();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key !== 'Escape') return;
+        if (servicesMenu.isOpen()) {
+          servicesMenu.closeMenu();
+          servicesMenu.btn.focus();
+        }
+        if (irrigationMenu.isOpen()) {
+          irrigationMenu.closeMenu();
+          irrigationMenu.btn.focus();
+        }
+      });
+
+      window.addEventListener('resize', function () {
+        if (window.innerWidth >= 1024) {
+          mobileMenu.classList.add('hidden');
+          menuIconOpen.classList.remove('hidden');
+          menuIconClose.classList.add('hidden');
+          mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>
