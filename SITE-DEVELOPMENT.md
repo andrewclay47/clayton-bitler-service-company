@@ -37,6 +37,7 @@ Use this file when continuing work on this static site. Prefer matching existing
 ├── about.html                 # About Us
 ├── contact.html               # Phone + Clayton@SprinklerGenius.com
 ├── assets/images/             # Logos + project photos
+├── assets/js/phone-modal.js   # Desktop tel: popup
 ├── services/
 │   ├── lawn-mowing.html
 │   ├── landscaping.html
@@ -121,6 +122,8 @@ Every page includes the same IIFE for:
 - Desktop services dropdown (click, outside click, Escape)
 - Close mobile menu on resize ≥ 1024px
 
+Plus `assets/js/phone-modal.js` (path `../assets/js/phone-modal.js` from `services/` and `irrigation/`): on viewports **wider than 767px**, `tel:` and `mailto:` clicks open a dialog with copy (and open-mail-app for email). Mobile keeps native `tel:` / `mailto:` behavior.
+
 **Best practice:** Copy header + footer + script from an existing page (`about.html` or `services/lawn-mowing.html`), then swap main content. Fix relative paths:
 
 | Page location | Logo / assets | Service links | Root links |
@@ -202,7 +205,7 @@ class="... bg-white/10 hover:bg-white/20 border border-white/30 text-white ..."
 
 **Footer (required on every page)**
 
-1. 4-column grid: brand + phone, Quick Links, Services, Service Area
+1. 5-column grid (`lg:grid-cols-5`): brand + phone, Quick Links, Services, Irrigation, Service Area
 2. Legal (exact):  
    `LI 8729 BP 10016. Irrigation in Texas is regulated by the Texas Commission On Environmental Quality (TCEQ) (MC-178), P.O. Box 13087, Austin, Texas 78711-3087.`
 3. Copyright + “Dallas, Texas”
@@ -212,7 +215,9 @@ class="... bg-white/10 hover:bg-white/20 border border-white/30 text-white ..."
 <div class="inline-flex flex-wrap items-center gap-x-3 gap-y-1 bg-white text-slate-600 rounded-md px-2.5 py-1.5">
   <span class="inline-flex items-center gap-2">
     <span>Powered by</span>
-    <img src="assets/images/ant-logo.png" alt="Red Clay Marketing" class="h-7 w-auto">
+    <a href="https://redclay.marketing" target="_blank" rel="noopener noreferrer" class="inline-flex items-center hover:opacity-80 transition-opacity" aria-label="Red Clay Marketing">
+      <img src="assets/images/ant-logo.png" alt="Red Clay Marketing" class="h-7 w-auto">
+    </a>
   </span>
   <span class="text-slate-300" aria-hidden="true">|</span>
   <a href="mailto:andrew@redclay.marketing" class="hover:text-forest-700 transition-colors">
@@ -236,7 +241,7 @@ White pill is intentional: logo has **black** “MARKETING” text that would di
 5. Roof Replacements → `services/roof-replacements.html`
 6. Pools → `services/pools.html`
 
-When adding a service: update **desktop dropdown, mobile accordion, and footer** on **all** pages (root + every service page + irrigation pages).
+When adding a service: update **desktop dropdown, mobile accordion, and footer Services column** on **all** pages (root + every service page + irrigation pages).
 
 ## Irrigation list (current nav)
 
@@ -250,7 +255,7 @@ Separate top-level **Irrigation** dropdown (same interaction pattern as Services
 6. Custom Scheduling → `irrigation/custom-scheduling.html`
 7. Water Conservation → `irrigation/water-conservation.html`
 
-When adding an irrigation service: update **desktop Irrigation dropdown, mobile Irrigation accordion, and irrigation overview cards** on **all** pages. Rename/replace placeholder pages as needed. Keep Sprinkler Genius naming in titles, heroes, and body copy.
+When adding an irrigation service: update **desktop Irrigation dropdown, mobile Irrigation accordion, irrigation overview cards, and footer Irrigation column** on **all** pages. Rename/replace placeholder pages as needed. Keep Sprinkler Genius naming in titles, heroes, and body copy.
 
 ---
 
@@ -259,8 +264,9 @@ When adding an irrigation service: update **desktop Irrigation dropdown, mobile 
 | File | Use |
 |------|-----|
 | `logo.png` | Site brand (header/footer) — red/white Clayton Bitler logo |
+| `lawn-mowing.png` | Homepage Lawn Mowing service card |
 | `sprinkler-schedule-sample.png` | Custom Scheduling page — sample watering schedule screenshot |
-| `ant-logo.png` | Red Clay Marketing “Powered by” (transparent bg; includes black MARKETING) |
+| `ant-logo.png` | Red Clay Marketing “Powered by” logo — links to https://redclay.marketing |
 | `fence-project.png`, `fence-pool.png`, `arbor-pool.png` | Fence / arbor |
 | `roof-replacement.png` | Roofing |
 | `pool-finished.png`, `pool-repair.png` | Pools |
