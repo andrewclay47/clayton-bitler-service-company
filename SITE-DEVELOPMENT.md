@@ -11,6 +11,7 @@ Use this file when continuing work on this static site. Prefer matching existing
 | Business | Clayton Bitler Service Company |
 | Location | Dallas / North Dallas metro (TX) |
 | Phone | `972-670-2690` (`tel:9726702690`) |
+| Irrigation email | `Clayton@SprinklerGenius.com` |
 | Domain | `claybitlerservicecompany.com` |
 | DNS host | Squarespace |
 | Email for site mail | None (no Google Workspace on this domain) |
@@ -34,7 +35,7 @@ Use this file when continuing work on this static site. Prefer matching existing
 /
 ├── index.html                 # Homepage
 ├── about.html                 # About Us
-├── contact.html               # NOT BUILT YET (links exist)
+├── contact.html               # Phone + Clayton@SprinklerGenius.com
 ├── assets/images/             # Logos + project photos
 ├── services/
 │   ├── lawn-mowing.html
@@ -57,7 +58,7 @@ Use this file when continuing work on this static site. Prefer matching existing
 
 **Irrigation:** Separate top-level nav dropdown (mirrors Services). Keep the TCEQ legal line in the footer (licenses LI 8729 / BP 10016).
 
-**Not built yet:** `contact.html` (many CTAs link to it).
+**Contact:** `contact.html` shows phone (`972-670-2690`) and email (`Clayton@SprinklerGenius.com`) as large clickable cards. Schedule CTAs should link here.
 
 ---
 
