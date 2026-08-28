@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Private viewer analytics for Clayton Bitler Service Company.">
+  <title>Viewer Analytics | Clayton Bitler Service Company</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: {
+              50:  '#f2f7f4',
+              100: '#e0ede5',
+              200: '#c2dacb',
+              300: '#97bfaa',
+              400: '#6a9f82',
+              500: '#4a8266',
+              600: '#386851',
+              700: '#2d5342',
+              800: '#264336',
+              900: '#20382d',
+              950: '#111f19',
+            },
+            accent: {
+              DEFAULT: '#c9a227',
+              light: '#e8c547',
+              dark: '#a6851f',
+            },
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+</head>
+
+<body class="font-sans text-slate-700 antialiased bg-slate-50 min-h-screen">
+
+  <div id="login-screen" class="min-h-screen flex items-center justify-center px-4 py-12">
+    <div class="w-full max-w-md bg-white rounded-2xl border border-slate-100 shadow-sm p-8">
+      <a href="index.html" class="inline-block mb-6" aria-label="Clayton Bitler Service Company — Home">
+        <img src="assets/images/logo.png" alt="Clayton Bitler Service Company" class="h-12 w-auto">
+      </a>
+      <p class="text-sm font-semibold text-forest-600 uppercase tracking-widest mb-2">Private</p>
+      <h1 class="text-2xl font-extrabold text-forest-900 tracking-tight mb-2">Viewer analytics</h1>
+      <p class="text-slate-600 leading-relaxed mb-6">
+        Enter the admin password to see page views, visitors, and contact taps.
+      </p>
+      <form id="login-form" class="space-y-4">
+        <label class="block">
+          <span class="block text-sm font-semibold text-forest-900 mb-1.5">Password</span>
+          <input
+            id="login-password"
+            type="password"
+            autocomplete="current-password"
+            class="w-full rounded-xl border border-slate-200 px-4 py-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-forest-600 focus:border-forest-600"
+            required
+          >
+        </label>
+        <p id="login-error" class="hidden text-sm text-red-700">That password doesn’t match. Try again.</p>
+        <button
+          type="submit"
+          class="w-full bg-forest-700 hover:bg-forest-600 text-white font-semibold px-5 py-3 rounded-xl transition-colors"
+        >
+          View analytics
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div id="dashboard" class="hidden min-h-screen flex flex-col">
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16 lg:h-20 gap-3">
+          <a href="index.html" class="flex items-center shrink-0" aria-label="Clayton Bitler Service Company — Home">
+            <img src="assets/images/logo.png" alt="Clayton Bitler Service Company" class="h-10 sm:h-12 w-auto">
+          </a>
+          <div class="flex items-center gap-2 sm:gap-3">
+            <button
+              id="refresh-btn"
+              type="button"
+              class="px-3 sm:px-4 py-2 text-sm font-medium text-slate-600 hover:text-forest-700 hover:bg-forest-50 rounded-lg transition-colors"
+            >
+              Refresh
+            </button>
+            <button
+              id="signout-btn"
+              type="button"
+              class="px-3 sm:px-4 py-2 text-sm font-medium text-slate-600 hover:text-forest-700 hover:bg-forest-50 rounded-lg transition-colors"
+            >
+              Sign out
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-1">
+      <section class="bg-forest-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14">
+          <p class="text-sm font-semibold text-accent uppercase tracking-widest mb-3">Site traffic</p>
+          <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-3">Viewer analytics</h1>
+          <p class="text-white/80 max-w-2xl">
+            Page views and contact taps from visitors on this domain.
+            <span id="host-label" class="font-medium text-white"></span>
+          </p>
+          <p id="host-note" class="hidden mt-3 text-sm text-accent-light"></p>
+        </div>
+      </section>
+
+      <section class="py-10 lg:py-14">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p id="updated-at" class="text-sm text-slate-500 mb-6"></p>
+          <p id="load-error" class="hidden mb-6 rounded-xl border border-red-100 bg-red-50 px-4 py-3 text-sm text-red-800"></p>
+
+          <div id="stats-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 mb-8">
+            <article class="bg-white rounded-2xl border border-slate-100 shadow-sm p-6">
+              <p class="text-sm font-semibold text-forest-600 uppercase tracking-widest mb-2">Views today</p>
+              <p id="stat-today" class="text-3xl font-extrabold text-forest-900 tracking-tight">—</p>
+            </article>
+            <article class="bg-white rounded-2xl border border-slate-100 shadow-sm p-6">
+              <p class="text-sm font-semibold text-forest-600 uppercase tracking-widest mb-2">Unique visitors today</p>
+              <p id="stat-unique-today" class="text-3xl font-extrabold text-forest-900 tracking-tight">—</p>
+            </article>
+            <article class="bg-white rounded-2xl border border-slate-100 shadow-sm p-6">
+              <p class="text-sm font-semibold text-forest-600 uppercase tracking-widest mb-2">Last 7 days</p>
+              <p id="stat-week" class="text-3xl font-extrabold text-forest-900 tracking-tight">—</p>
+            </article>
+            <article class="bg-white rounded-2xl border border-slate-100 shadow-sm p-6">
+              <p class="text-sm font-semibold text-forest-600 uppercase tracking-widest mb-2">Last 14 days</p>
+              <p id="stat-fortnight" class="text-3xl font-extrabold text-forest-900 tracking-tight">—</p>
+            </article>
+            <article class="bg-white rounded-2xl border border-slate-100 shadow-sm p-6">
+              <p class="text-sm font-semibold text-forest-600 uppercase tracking-widest mb-2">All-time views</p>
+              <p id="stat-all" class="text-3xl font-extrabold text-forest-900 tracking-tight">—</p>
+            </article>
+            <article class="bg-white rounded-2xl border border-slate-100 shadow-sm p-6">
+              <p class="text-sm font-semibold text-forest-600 uppercase tracking-widest mb-2">Unique visitors</p>
+              <p id="stat-unique" class="text-3xl font-extrabold text-forest-900 tracking-tight">—</p>
+            </article>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 mb-8">
+            <article class="bg-white rounded-2xl border-2 border-forest-600 shadow-sm p-6">
+              <p class="text-sm font-semibold text-forest-600 uppercase tracking-widest mb-2">Phone taps</p>
+              <p id="stat-phone" class="text-3xl font-extrabold text-forest-900 tracking-tight">—</p>
+              <p class="text-sm text-slate-500 mt-2">Clicks on the 972-670-2690 call links</p>
+            </article>
+            <article class="bg-white rounded-2xl border border-slate-100 shadow-sm p-6">
+              <p class="text-sm font-semibold text-forest-600 uppercase tracking-widest mb-2">Email taps</p>
+              <p id="stat-email" class="text-3xl font-extrabold text-forest-900 tracking-tight">—</p>
+              <p class="text-sm text-slate-500 mt-2">Clicks on Clayton@SprinklerGenius.com</p>
+            </article>
+          </div>
+
+          <article class="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 sm:p-8 mb-8">
+            <h2 class="text-xl font-extrabold text-forest-900 tracking-tight mb-1">Views by day</h2>
+            <p class="text-sm text-slate-500 mb-6">Dallas time (America/Chicago), last 14 days</p>
+            <div id="chart-empty" class="hidden text-slate-500 text-sm">No views recorded yet for this window.</div>
+            <div id="chart" class="flex items-end gap-1.5 sm:gap-2 h-48"></div>
+          </article>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 mb-8">
+            <article class="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 sm:p-8">
+              <h2 class="text-xl font-extrabold text-forest-900 tracking-tight mb-4">Pages</h2>
+              <div id="pages-table" class="overflow-x-auto"></div>
+            </article>
+            <article class="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 sm:p-8">
+              <h2 class="text-xl font-extrabold text-forest-900 tracking-tight mb-4">Devices</h2>
+              <div id="devices-list"></div>
+              <h2 class="text-xl font-extrabold text-forest-900 tracking-tight mt-8 mb-4">Traffic sources</h2>
+              <div id="sources-list"></div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer style="background-color: #1a2332;" class="text-slate-400 mt-auto">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <p class="text-xs text-slate-500 leading-relaxed mb-4">
+          LI 8729 BP 10016. Irrigation in Texas is regulated by the Texas Commission On Environmental Quality (TCEQ) (MC-178), P.O. Box 13087, Austin, Texas 78711-3087.
+        </p>
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-xs text-slate-500">
+          <p>&copy; <span id="copyright-year"></span> Clayton Bitler Service Company. All rights reserved.</p>
+          <div class="inline-flex flex-wrap items-center gap-x-3 gap-y-1 bg-white text-slate-600 rounded-md px-2.5 py-1.5">
+            <span class="inline-flex items-center gap-2">
+              <span>Powered by</span>
+              <a href="https://redclay.marketing" target="_blank" rel="noopener noreferrer" class="inline-flex items-center hover:opacity-80 transition-opacity" aria-label="Red Clay Marketing">
+                <img src="assets/images/ant-logo.png" alt="Red Clay Marketing" class="h-7 w-auto">
+              </a>
+            </span>
+            <span class="text-slate-300" aria-hidden="true">|</span>
+            <a href="mailto:andrew@redclay.marketing" class="hover:text-forest-700 transition-colors">
+              Contact: andrew@redclay.marketing
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var API = 'https://counterapi.com/api';
+      var SESSION_KEY = 'cb-admin-ok';
+      var PASSWORD = ['Bitler', 'Admin'].join('');
+      var NS = String(window.location.hostname || 'local').replace(/^www\./i, '');
+      var PAGES = [
+        { key: 'home', label: 'Home' },
+        { key: 'about', label: 'About Us' },
+        { key: 'contact', label: 'Contact' },
+        { key: 'services-lawn-mowing', label: 'Lawn Mowing' },
+        { key: 'services-landscaping', label: 'Landscaping' },
+        { key: 'services-fence-arbor', label: 'Fence & Arbor' },
+        { key: 'services-concrete', label: 'Concrete' },
+        { key: 'services-roof-replacements', label: 'Roof Replacements' },
+        { key: 'services-pools', label: 'Pools' },
+        { key: 'irrigation-index', label: 'Irrigation Overview' },
+        { key: 'irrigation-system-installation', label: 'Sprinkler Installation' },
+        { key: 'irrigation-sprinkler-design', label: 'Sprinkler Design' },
+        { key: 'irrigation-repairs', label: 'Sprinkler Repair' },
+        { key: 'irrigation-backflow-testing', label: 'Backflow Testing' },
+        { key: 'irrigation-custom-scheduling', label: 'Custom Scheduling' },
+        { key: 'irrigation-water-conservation', label: 'Water Conservation' },
+      ];
+      var DEVICES = [
+        { key: 'desktop', label: 'Desktop' },
+        { key: 'mobile', label: 'Mobile' },
+        { key: 'tablet', label: 'Tablet' },
+      ];
+      var SOURCES = [
+        { key: 'direct', label: 'Direct / unknown' },
+        { key: 'google', label: 'Google' },
+        { key: 'search', label: 'Other search' },
+        { key: 'facebook', label: 'Facebook' },
+        { key: 'instagram', label: 'Instagram' },
+        { key: 'yelp', label: 'Yelp' },
+        { key: 'social', label: 'Other social' },
+        { key: 'other', label: 'Other sites' },
+      ];
+
+      var loginScreen = document.getElementById('login-screen');
+      var dashboard = document.getElementById('dashboard');
+      var loginForm = document.getElementById('login-form');
+      var loginError = document.getElementById('login-error');
+      var loginPassword = document.getElementById('login-password');
+      var loadError = document.getElementById('load-error');
+      var failedReads = 0;
+
+      document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
+      function todayKey() {
+        try {
+          return new Intl.DateTimeFormat('en-CA', {
+            timeZone: 'America/Chicago',
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+          }).format(new Date());
+        } catch (err) {
+          return new Date().toISOString().slice(0, 10);
+        }
+      }
+
+      function dateList(days) {
+        var today = todayKey().split('-').map(Number);
+        var out = [];
+        for (var i = days - 1; i >= 0; i--) {
+          var dt = new Date(Date.UTC(today[0], today[1] - 1, today[2] - i));
+          out.push(dt.toISOString().slice(0, 10));
+        }
+        return out;
+      }
+
+      function formatNumber(value) {
+        return Number(value || 0).toLocaleString('en-US');
+      }
+
+      function readCount(action, key) {
+        var url =
+          API +
+          '/' +
+          encodeURIComponent(NS) +
+          '/' +
+          encodeURIComponent(action) +
+          '/' +
+          encodeURIComponent(key) +
+          '?readOnly=true';
+        return fetch(url, { cache: 'no-store' })
+          .then(function (res) {
+            if (!res.ok) throw new Error('bad status');
+            return res.json();
+          })
+          .then(function (data) {
+            return Number(data && data.value) || 0;
+          })
+          .catch(function () {
+            failedReads += 1;
+            return 0;
+          });
+      }
+
+      function setText(id, value) {
+        var el = document.getElementById(id);
+        if (el) el.textContent = value;
+      }
+
+      function barRow(items) {
+        var total = 0;
+        var i;
+        for (i = 0; i < items.length; i++) total += items[i].value;
+        if (!total) {
+          return '<p class="text-sm text-slate-500">No data yet.</p>';
+        }
+        var html = '<ul class="space-y-3">';
+        for (i = 0; i < items.length; i++) {
+          var pct = Math.round((items[i].value / total) * 100);
+          html +=
+            '<li>' +
+              '<div class="flex items-center justify-between text-sm mb-1">' +
+                '<span class="font-medium text-slate-700">' + items[i].label + '</span>' +
+                '<span class="text-slate-500">' + formatNumber(items[i].value) + ' · ' + pct + '%</span>' +
+              '</div>' +
+              '<div class="h-2 rounded-full bg-forest-50 overflow-hidden">' +
+                '<div class="h-full rounded-full bg-forest-600" style="width:' + pct + '%"></div>' +
+              '</div>' +
+            '</li>';
+        }
+        html += '</ul>';
+        return html;
+      }
+
+      function renderPages(rows) {
+        rows.sort(function (a, b) { return b.value - a.value; });
+        var html =
+          '<table class="w-full text-sm">' +
+            '<thead>' +
+              '<tr class="text-left text-slate-500 border-b border-slate-100">' +
+                '<th class="pb-2 font-semibold">Page</th>' +
+                '<th class="pb-2 font-semibold text-right">Views</th>' +
+              '</tr>' +
+            '</thead>' +
+            '<tbody>';
+        var i;
+        var any = false;
+        for (i = 0; i < rows.length; i++) {
+          if (!rows[i].value) continue;
+          any = true;
+          html +=
+            '<tr class="border-b border-slate-50">' +
+              '<td class="py-2.5 text-slate-700">' + rows[i].label + '</td>' +
+              '<td class="py-2.5 text-right font-semibold text-forest-900">' + formatNumber(rows[i].value) + '</td>' +
+            '</tr>';
+        }
+        if (!any) {
+          html += '<tr><td colspan="2" class="py-3 text-slate-500">No page views yet.</td></tr>';
+        }
+        html += '</tbody></table>';
+        document.getElementById('pages-table').innerHTML = html;
+      }
+
+      function renderChart(days) {
+        var chart = document.getElementById('chart');
+        var empty = document.getElementById('chart-empty');
+        var max = 0;
+        var i;
+        for (i = 0; i < days.length; i++) {
+          if (days[i].value > max) max = days[i].value;
+        }
+        if (!max) {
+          chart.innerHTML = '';
+          empty.classList.remove('hidden');
+          return;
+        }
+        empty.classList.add('hidden');
+        var html = '';
+        for (i = 0; i < days.length; i++) {
+          var height = Math.max(6, Math.round((days[i].value / max) * 100));
+          var parts = days[i].key.split('-');
+          var label = Number(parts[1]) + '/' + Number(parts[2]);
+          var isToday = i === days.length - 1;
+          html +=
+            '<div class="flex-1 min-w-0 flex flex-col items-center h-full justify-end">' +
+              '<span class="text-[10px] sm:text-xs text-slate-500 mb-1">' + formatNumber(days[i].value) + '</span>' +
+              '<div class="' + (isToday ? 'bg-accent' : 'bg-forest-600') + ' w-full rounded-t" style="height:' + height + '%" title="' + days[i].key + ': ' + days[i].value + '"></div>' +
+              '<span class="text-[10px] sm:text-xs text-slate-400 mt-2">' + label + '</span>' +
+            '</div>';
+        }
+        chart.innerHTML = html;
+      }
+
+      function showDashboard() {
+        loginScreen.classList.add('hidden');
+        dashboard.classList.remove('hidden');
+        document.getElementById('host-label').textContent = 'Host: ' + NS;
+        var liveHosts = { 'claybitlerservicecompany.com': true, 'andrewclay47.github.io': true };
+        var note = document.getElementById('host-note');
+        if (!liveHosts[NS]) {
+          note.textContent = 'These numbers are for ' + NS + '. Open admin.html on the live site to see visitor traffic.';
+          note.classList.remove('hidden');
+        } else {
+          note.classList.add('hidden');
+        }
+        loadAnalytics();
+      }
+
+      function loadAnalytics() {
+        failedReads = 0;
+        loadError.classList.add('hidden');
+        setText('updated-at', 'Loading…');
+        var days = dateList(14);
+        var jobs = [
+          readCount('pageview', 'all'),
+          readCount('visitor', 'unique'),
+          readCount('visitor-day', todayKey()),
+          readCount('click', 'phone'),
+          readCount('click', 'email'),
+        ];
+        var dayStart = jobs.length;
+        var i;
+        for (i = 0; i < days.length; i++) jobs.push(readCount('day', days[i]));
+        var pageStart = jobs.length;
+        for (i = 0; i < PAGES.length; i++) jobs.push(readCount('pageview', PAGES[i].key));
+        var deviceStart = jobs.length;
+        for (i = 0; i < DEVICES.length; i++) jobs.push(readCount('device', DEVICES[i].key));
+        var sourceStart = jobs.length;
+        for (i = 0; i < SOURCES.length; i++) jobs.push(readCount('source', SOURCES[i].key));
+
+        Promise.all(jobs).then(function (values) {
+          var allViews = values[0];
+          var unique = values[1];
+          var uniqueToday = values[2];
+          var phone = values[3];
+          var email = values[4];
+          var dayRows = [];
+          var week = 0;
+          var fortnight = 0;
+          for (i = 0; i < days.length; i++) {
+            var count = values[dayStart + i];
+            dayRows.push({ key: days[i], value: count });
+            fortnight += count;
+            if (i >= days.length - 7) week += count;
+          }
+          var todayViews = dayRows.length ? dayRows[dayRows.length - 1].value : 0;
+          var pageRows = [];
+          for (i = 0; i < PAGES.length; i++) {
+            pageRows.push({ label: PAGES[i].label, value: values[pageStart + i] });
+          }
+          var deviceRows = [];
+          for (i = 0; i < DEVICES.length; i++) {
+            deviceRows.push({ label: DEVICES[i].label, value: values[deviceStart + i] });
+          }
+          var sourceRows = [];
+          for (i = 0; i < SOURCES.length; i++) {
+            sourceRows.push({ label: SOURCES[i].label, value: values[sourceStart + i] });
+          }
+
+          setText('stat-today', formatNumber(todayViews));
+          setText('stat-unique-today', formatNumber(uniqueToday));
+          setText('stat-week', formatNumber(week));
+          setText('stat-fortnight', formatNumber(fortnight));
+          setText('stat-all', formatNumber(allViews));
+          setText('stat-unique', formatNumber(unique));
+          setText('stat-phone', formatNumber(phone));
+          setText('stat-email', formatNumber(email));
+          renderChart(dayRows);
+          renderPages(pageRows);
+          document.getElementById('devices-list').innerHTML = barRow(deviceRows);
+          document.getElementById('sources-list').innerHTML = barRow(sourceRows);
+
+          var now = new Date();
+          setText(
+            'updated-at',
+            'Updated ' + now.toLocaleString('en-US', { timeZone: 'America/Chicago' }) + ' (Dallas time)'
+          );
+          if (failedReads === jobs.length) {
+            loadError.textContent = 'Could not load analytics right now. Check your connection and tap Refresh.';
+            loadError.classList.remove('hidden');
+          }
+        });
+      }
+
+      function unlock() {
+        try { sessionStorage.setItem(SESSION_KEY, '1'); } catch (err) {}
+        showDashboard();
+      }
+
+      loginForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        if (loginPassword.value === PASSWORD) {
+          loginError.classList.add('hidden');
+          loginPassword.value = '';
+          unlock();
+          return;
+        }
+        loginError.classList.remove('hidden');
+        loginPassword.focus();
+      });
+
+      document.getElementById('refresh-btn').addEventListener('click', loadAnalytics);
+      document.getElementById('signout-btn').addEventListener('click', function () {
+        try { sessionStorage.removeItem(SESSION_KEY); } catch (err) {}
+        dashboard.classList.add('hidden');
+        loginScreen.classList.remove('hidden');
+        loginPassword.focus();
+      });
+
+      try {
+        if (sessionStorage.getItem(SESSION_KEY) === '1') showDashboard();
+      } catch (err) {}
+    })();
+  </script>
+</body>
+</html>
