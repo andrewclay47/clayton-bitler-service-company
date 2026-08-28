@@ -36,8 +36,11 @@ Use this file when continuing work on this static site. Prefer matching existing
 ├── index.html                 # Homepage
 ├── about.html                 # About Us
 ├── contact.html               # Phone + Clayton@SprinklerGenius.com
+├── admin.html                 # Private viewer analytics (not in nav)
+├── robots.txt                 # Disallows /admin.html
 ├── assets/images/             # Logos + project photos
 ├── assets/js/phone-modal.js   # Desktop tel: popup
+├── assets/js/analytics.js     # Page-view + click tracker for admin.html
 ├── services/
 │   ├── lawn-mowing.html
 │   ├── landscaping.html
@@ -123,6 +126,10 @@ Every page includes the same IIFE for:
 - Close mobile menu on resize ≥ 1024px
 
 Plus `assets/js/phone-modal.js` (path `../assets/js/phone-modal.js` from `services/` and `irrigation/`): on viewports **wider than 767px**, `tel:` and `mailto:` clicks open a dialog with copy (and open-mail-app for email). Mobile keeps native `tel:` / `mailto:` behavior.
+
+Plus `assets/js/analytics.js` on every public page (not `admin.html`): records page views, unique visitors, device, traffic source, and `tel:` / `mailto:` taps. Stats are per hostname, so live numbers show on `claybitlerservicecompany.com/admin.html`.
+
+**Admin analytics** (`admin.html`): unlisted, `noindex`, not in the header/footer. Password is `BitlerAdmin` (client-side gate only — do not treat as real security). Open on the live domain after deploy.
 
 **Best practice:** Copy header + footer + script from an existing page (`about.html` or `services/lawn-mowing.html`), then swap main content. Fix relative paths:
 
@@ -298,7 +305,7 @@ User typically: GitHub → **Add file → Upload files** → drag folders (`asse
 ## Checklist for a new page
 
 1. Copy an existing page shell (header/footer/theme/JS).
-2. Fix all relative paths for root vs `services/`.
+2. Fix all relative paths for root vs `services/`. Include `analytics.js` next to `phone-modal.js`.
 3. Mark active nav item with `text-forest-700 bg-forest-50`.
 4. Match hero / section / card / CTA classes above.
 5. Include legal footer + Powered by pill + mailto.
